@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ======================================================================= -->
+<!--  File:         build.xml                                                -->
+<!--  Description:  Sample Apache Ant buildfile                              -->
+<!--  Version:      1.0-post-fbbac21                                         -->
+<!--  Author:       Nano Taboada (http://openid.nanotaboada.com.ar)          -->
+<!-- ======================================================================= -->
+
+<!-- 
+ Assuming a single directory structure for simplicity, the build file should
+ contain a number of top level targets:
+
+  build - do an (incremental) build
+  test - run the junit tests
+  clean - clean out the output directories
+  deploy - ship the jars, wars, whatever to the execution system
+  publish - output the source and binaries to any distribution site
+  fetch - get the latest source from the cvs tree
+  docs/javadocs - do the documentation
+  all - clean, fetch, build, test, docs, deploy
+  main - the default build process (usually build or build & test)
+
+Source: http://ant.apache.org/ant_in_anger.html
+-->
+    
+<project name="ar.com.nanotaboada.java.samples.ant" default="main" basedir="."> 
+
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+  
+  <property name="lipsum" value="Lorem ipsum dolor sit amet, consectetur."/>
+    
+  <target name="main" depends="all" />
+  <target name="all" depends="init, build, dist" />
+  
+  <target name="init" depends="clean">
+    <tstamp>
+      <format property="DSTAMP" pattern="yyyymmddhhmm"/>
+    </tstamp>   
+    <echo>${lipsum}</echo>
+    <mkdir dir="${build}"/>
+  </target>
+    
+  <target name="clean">
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+    
+  <target name="build" depends="init">
+    <javac srcdir="${src}" destdir="${build}"/>
+  </target>
+
+  <target name="dist" depends="build">
+    <mkdir dir="${dist}/lib"/>
+    <jar jarfile="${dist}/lib/Program-${DSTAMP}.jar" basedir="${build}"/>
+  </target>
+    
+</project>
