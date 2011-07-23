@@ -1,0 +1,133 @@
+package ar.com.nanotaboada.java.samples.derby;
+
+import java.io.File;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Properties;
+
+public class DbHelper
+{
+  private static Properties _pro = System.getProperties();
+  private static String final _dir = _pro.getProperty("user.dir");
+  private static StringBuilder _url = new StringBuilder();
+  
+  public static void createBooksTable()
+  {
+    _pro.setProperty("derby.system.home", _dir);
+    _pro.setProperty("derby.stream.error.file", _dir+"/log/derby.log");
+    _url.append("jdbc:derby:");
+    _url.append(_dir+"/res/catalog.db");
+    _url.append(";create=true");
+    
+    try {
+      Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
+      Connection connection = DriverManager.getConnection(_url.toString());
+      Statement statement = null;
+      ArrayList<Statement> statements = new ArrayList<Statement>();
+      PreparedStatement insert = null;
+      statement = connection.createStatement();
+      statements.add(statement);
+      
+      statement.execute("CREATE TABLE books (" +
+          "isbn VARCHAR (13) PRIMARY KEY," +
+          "title VARCHAR (255)," +
+          "author VARCHAR (255)," +
+          "publisher VARCHAR (255)," +
+          "published DATE," +
+          "pages INT," +
+          "instock BOOLEAN," +
+          "description LONG VARCHAR" +
+          ")");
+      
+      insert = connection.prepareStatement("INSERT INTO books VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+      statements.add(insert);
+      
+      insert.setString(1, "0596009208");
+      insert.setString(2, "Head First Java");
+      insert.setString(3, "Kathy Sierra, et al.");
+      insert.setString(4, "O''Reilly Media");
+      insert.setDate(5, Date.valueOf("2005-02-09"));
+      insert.setInt(6, 688);
+      insert.setBoolean(7, true);
+      insert.setString(8, null);
+      insert.executeUpdate();
+      
+      insert.setString(1, "0321356683");
+      insert.setString(2, "Effective Java");
+      insert.setString(3, "Joshua Bloch");
+      insert.setString(4, "Prentice Hall");
+      insert.setDate(5, Date.valueOf("2008-05-28"));
+      insert.setInt(6, 384);
+      insert.setBoolean(7, true);
+      insert.setString(8, null);
+      insert.executeUpdate();
+      
+      insert.setString(1, "0132130807");
+      insert.setString(2, "Introduction to Java Programming");
+      insert.setString(3, "Y. Daniel Liang");
+      insert.setString(4, "Prentice Hall");
+      insert.setDate(5, Date.valueOf("2010-01-13"));
+      insert.setInt(6, 1368);
+      insert.setBoolean(7, true);
+      insert.setString(8, null);
+      insert.executeUpdate();
+      
+      insert.setString(1, "0321349806");
+      insert.setString(2, "The Java Programming Language");
+      insert.setString(3, "Ken Arnold, et al.");
+      insert.setString(4, "Prentice Hall");
+      insert.setDate(5, Date.valueOf("2005-08-27"));
+      insert.setInt(6, 928);
+      insert.setBoolean(7, true);
+      insert.setString(8, null);
+      insert.executeUpdate();
+      
+      insert.setString(1, "0131872486");
+      insert.setString(2, "Thinking in Java");
+      insert.setString(3, "Bruce Eckel");
+      insert.setString(4, "Prentice Hall");
+      insert.setDate(5, Date.valueOf("2006-02-20"));
+      insert.setInt(6, 1150);
+      insert.setBoolean(7, true);
+      insert.setString(8, null);
+      insert.executeUpdate();
+      
+      insert.setString(1, "0071606300");
+      insert.setString(2, "Java The Complete Reference");
+      insert.setString(3, "Herbert Schildt");
+      insert.setString(4, "McGraw-Hill");
+      insert.setDate(5, Date.valueOf("2011-07-26"));
+      insert.setInt(6, 1056);
+      insert.setBoolean(7, true);
+      insert.setString(8, null);
+      insert.executeUpdate();
+      
+      insert.setString(1, "0132575663");
+      insert.setString(2, "Java How To Program");
+      insert.setString(3, "Paul Deitel, et al.");
+      insert.setString(4, "Prentice Hall");
+      insert.setDate(5, Date.valueOf("2011-03-07"));
+      insert.setInt(6, 1536);
+      insert.setBoolean(7, true);
+      insert.setString(8, null);
+      insert.executeUpdate();
+      
+      insert.setString(1, "0596008732");
+      insert.setString(2, "Learning Java");
+      insert.setString(3, "Patrick Niemeyer, et al.");
+      insert.setString(4, "'O''Reilly Media");
+      insert.setDate(5, Date.valueOf("2005-05-01"));
+      insert.setInt(6, 984);
+      insert.setBoolean(7, true);
+      insert.setString(8, null);
+      insert.executeUpdate();
+      
+    } catch (Exception err) {
+      System.out.println(err.getMessage());
+    }
+  }
+}
