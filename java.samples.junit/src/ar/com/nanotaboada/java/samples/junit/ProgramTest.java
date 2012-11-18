@@ -27,16 +27,14 @@ import org.junit.Test;
 public class ProgramTest
 {
   @Test
-  public void getPangram_returnValueIsNotNull_returnsTrue()
+  public void getPangram_whenInvoked_thenReturnsExpectedValue()
   {
+    // Arrange
     Program program = new Program();
-    assertNotNull(program.getPangram());
-  }
-  @Test
-  public void getPangram_returnValueIsExpectedString_returnsTrue()
-  {
     final String expected = "The quick brown fox jumps over the lazy dog.";
-    Program program = new Program();
-    assertEquals(expected, program.getPangram());
+    // Act
+    final String actual = program.getPangram();
+    // Assert
+    assertEquals(expected, actual);
   }
 }
