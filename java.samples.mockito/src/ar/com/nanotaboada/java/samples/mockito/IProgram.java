@@ -21,6 +21,7 @@
 
 package ar.com.nanotaboada.java.samples.mockito;
 
-public interface IProgram {
-    public String getPangram();
+public interface IProgram
+{
+  public String getPangram();
 }
