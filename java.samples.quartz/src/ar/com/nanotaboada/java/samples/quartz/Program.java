@@ -40,7 +40,7 @@ import org.quartz.impl.StdSchedulerFactory;
 public class Program
 {
   private static final Logger _log = Logger.getLogger(Program.class);
-  private static final File _cfg = new File("conf/log4j.xml");
+  private static final File _cfg = new File("cfg/log4j.xml");
   private static final String _dbg = "log4j.xml configuration successfully loaded.";
   public static void main(String[] args)
   {

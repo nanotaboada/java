@@ -30,7 +30,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 class Program
 {
   private static final Logger _log = Logger.getLogger(Program.class);
-  private static final File _cfg = new File("conf/log4j.xml");
+  private static final File _cfg = new File("cfg/log4j.xml");
   private static final String _dbg = "log4j.xml configuration successfully loaded.";
   private static final String _msg = "The quick brown fox jumps over the lazy dog.";  
   public static void main(String[] args)
