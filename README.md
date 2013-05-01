@@ -10,7 +10,7 @@ Oracle&reg; Java&trade; sample projects showcasing a variety of technologies, fr
 
 Credits
 -------
-All samples have been coded in [Java](http://en.wikipedia.org/wiki/Java_%28programming_language%29) using [Eclipse JDT](http://www.eclipse.org/projects/project.php?id=eclipse.jdt), mostly targeting [Java SE 6](http://www.oracle.com/technetwork/java/javase/overview/index.html).
+All samples have been coded in [Java](http://en.wikipedia.org/wiki/Java_%28programming_language%29) using [Eclipse JDT](http://www.eclipse.org/projects/project.php?id=eclipse.jdt) mostly targeting [Java SE 6](http://www.oracle.com/technetwork/java/javase/overview/index.html) and trying to follow ["Code Conventions for the Java Programming Language"](http://www.oracle.com/technetwork/java/codeconv-138413.html).
 
 Terms
 -----

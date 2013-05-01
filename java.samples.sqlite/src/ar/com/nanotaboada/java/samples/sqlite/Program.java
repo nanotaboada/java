@@ -1,5 +1,5 @@
 /** MIT-LICENSE 
- * Copyright (c) 2011 Nano Taboada, http://openid.nanotaboada.com.ar
+ * Copyright (c) 2013 Nano Taboada, http://openid.nanotaboada.com.ar
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -24,11 +24,12 @@ package ar.com.nanotaboada.java.samples.sqlite;
 import java.sql.*;
 
 public class Program
-{	
+{
   // INFO: Performing Read for simplicity but could be any CRUD operation.
   private static final String _str = "jdbc:sqlite:res/catalog.sqlite";
   private static final String _sql = "SELECT * FROM books;";
   private static StringBuilder _txt = new StringBuilder();
+  
   public static void main(String[] args)
   {
     try {
@@ -55,12 +56,12 @@ public class Program
       // INFO: Given that Date getters are mostly deprecated we will
       //       instead use getString() on "Published" for simplicity.
       while (resultSet.next()) {
-      	_txt.append(String.format("%-35s %-25s %-10s %5d",
-      	                          resultSet.getString("Title"),
-      	                          resultSet.getString("Author"),
-      	                          resultSet.getString("Published"),
-      	                          resultSet.getInt("Pages")
-      	                         ));
+        _txt.append(String.format("%-35s %-25s %-10s %5d",
+                                  resultSet.getString("Title"),
+                                  resultSet.getString("Author"),
+                                  resultSet.getString("Published"),
+                                  resultSet.getInt("Pages")
+                                 ));
         _txt.append(System.getProperty("line.separator"));
       }
       System.out.println(_txt.toString());

@@ -1,5 +1,5 @@
 /** MIT-LICENSE 
- * Copyright (c) 2011 Nano Taboada, http://openid.nanotaboada.com.ar
+ * Copyright (c) 2013 Nano Taboada, http://openid.nanotaboada.com.ar
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -32,7 +32,8 @@ class Program
   private static final Logger _log = Logger.getLogger(Program.class);
   private static final File _cfg = new File("cfg/log4j.xml");
   private static final String _dbg = "log4j.xml configuration successfully loaded.";
-  private static final String _msg = "The quick brown fox jumps over the lazy dog.";  
+  private static final String _msg = "The quick brown fox jumps over the lazy dog.";
+  
   public static void main(String[] args)
   {
     if (_cfg.exists()) {
@@ -46,7 +47,7 @@ class Program
       if (_log.isEnabledFor(Level.INFO)) _log.info(_msg);
       if (_log.isEnabledFor(Level.WARN)) _log.warn(_msg);
       if (_log.isEnabledFor(Level.ERROR)) _log.error(_msg);
-      if (_log.isEnabledFor(Level.FATAL)) _log.fatal(_msg);            
+      if (_log.isEnabledFor(Level.FATAL)) _log.fatal(_msg);
     } catch (Exception err) {
       System.out.println(err.getMessage());
     }

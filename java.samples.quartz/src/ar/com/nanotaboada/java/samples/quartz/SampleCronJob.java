@@ -1,5 +1,5 @@
 /** MIT-LICENSE 
- * Copyright (c) 2011 Nano Taboada, http://openid.nanotaboada.com.ar
+ * Copyright (c) 2013 Nano Taboada, http://openid.nanotaboada.com.ar
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -29,7 +29,8 @@ import org.quartz.JobExecutionException;
 public class SampleCronJob implements Job
 {
   private static final Logger _log = Logger.getLogger(SampleCronJob.class);
-  private static final String _msg = "The quick brown fox jumps over the lazy dog"; 
+  private static final String _msg = "The quick brown fox jumps over the lazy dog";
+  
   @Override
   public void execute(JobExecutionContext jec) throws JobExecutionException
   {	  

@@ -43,7 +43,7 @@ public class SampleHandler extends AbstractHandler
   {
     response.setContentType("text/html;charset=utf-8");
     response.setStatus(HttpServletResponse.SC_OK);
-    baseRequest.setHandled(true);            
+    baseRequest.setHandled(true);
     response.getWriter().println(_content);
   }
 }

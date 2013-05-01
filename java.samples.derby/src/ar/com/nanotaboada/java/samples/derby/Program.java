@@ -1,5 +1,5 @@
 /** MIT-LICENSE 
- * Copyright (c) 2011 Nano Taboada, http://openid.nanotaboada.com.ar
+ * Copyright (c) 2013 Nano Taboada, http://openid.nanotaboada.com.ar
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -35,44 +35,45 @@ public class Program
   private static StringBuilder _url = new StringBuilder();
   private static StringBuilder _out = new StringBuilder();
   private static final String _sql = "SELECT * FROM books ORDER BY published";
+  
   public static void main(String[] args)
   {
-  	_pro.setProperty("derby.system.home", _dir);
-  	_pro.setProperty("derby.stream.error.file", _dir+"/log/derby.log");
-	  _url.append("jdbc:derby:");
-  	_url.append(_dir+"/res/catalog.db");
+    _pro.setProperty("derby.system.home", _dir);
+    _pro.setProperty("derby.stream.error.file", _dir+"/log/derby.log");
+    _url.append("jdbc:derby:");
+    _url.append(_dir+"/res/catalog.db");
     _url.append(";create=true");
-  	try {
-	    Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
-	    Connection connection = DriverManager.getConnection(_url.toString());
-	    Statement statement = connection.createStatement();
-	    // TODO: Implement Create, Update and Delete methods.
-	    ResultSet resultSet = statement.executeQuery(_sql);
-	    _out.append(String.format("%-35s %-25s %-10s %-5s",
-	                              "Title",
-	                              "Author",
-	                              "Published",
-	                              "Pages"
-	                             ));
-	    _out.append(System.getProperty("line.separator"));
-	    _out.append(String.format("%-35s %-25s %-10s %-5s",
-	                              "-----------------------------------",
-	                              "-------------------------",
-	                              "----------",
-	                              "-----"
-	                             ));
-	    _out.append(System.getProperty("line.separator"));
-	
-	    // INFO: Given that Date getters are mostly deprecated we will
-	    //       instead use getString() on "Published" for simplicity.
-	    while (resultSet.next()) {
-	      _out.append(String.format("%-35s %-25s %-10s %5d",
-	                                resultSet.getString("Title"),
-	                                resultSet.getString("Author"),
-	                                resultSet.getString("Published"),
-	                                resultSet.getInt("Pages")
-	                               ));
-	      _out.append(System.getProperty("line.separator"));
+    try {
+        Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
+        Connection connection = DriverManager.getConnection(_url.toString());
+        Statement statement = connection.createStatement();
+        // TODO: Implement Create, Update and Delete methods.
+        ResultSet resultSet = statement.executeQuery(_sql);
+        _out.append(String.format("%-35s %-25s %-10s %-5s",
+                                  "Title",
+                                  "Author",
+                                  "Published",
+                                  "Pages"
+                                 ));
+        _out.append(System.getProperty("line.separator"));
+        _out.append(String.format("%-35s %-25s %-10s %-5s",
+                                  "-----------------------------------",
+                                  "-------------------------",
+                                  "----------",
+                                  "-----"
+                                 ));
+        _out.append(System.getProperty("line.separator"));
+    
+        // INFO: Given that Date getters are mostly deprecated we will
+        //       instead use getString() on "Published" for simplicity.
+        while (resultSet.next()) {
+          _out.append(String.format("%-35s %-25s %-10s %5d",
+                                    resultSet.getString("Title"),
+                                    resultSet.getString("Author"),
+                                    resultSet.getString("Published"),
+                                    resultSet.getInt("Pages")
+                                   ));
+          _out.append(System.getProperty("line.separator"));
       }
       System.out.println(_out.toString());
     } catch (Exception err) {

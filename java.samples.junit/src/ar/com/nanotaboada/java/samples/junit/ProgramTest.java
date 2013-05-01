@@ -1,5 +1,5 @@
 /** MIT-LICENSE 
- * Copyright (c) 2011 Nano Taboada, http://openid.nanotaboada.com.ar
+ * Copyright (c) 2013 Nano Taboada, http://openid.nanotaboada.com.ar
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -32,8 +32,10 @@ public class ProgramTest
     // Arrange
     Program program = new Program();
     final String expected = "The quick brown fox jumps over the lazy dog.";
+
     // Act
     final String actual = program.getPangram();
+    
     // Assert
     assertEquals(expected, actual);
   }

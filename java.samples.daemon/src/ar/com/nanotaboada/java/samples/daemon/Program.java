@@ -1,5 +1,5 @@
 /** MIT-LICENSE 
- * Copyright (c) 2012 Nano Taboada, http://openid.nanotaboada.com.ar
+ * Copyright (c) 2013 Nano Taboada, http://openid.nanotaboada.com.ar
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -25,7 +25,7 @@ import org.apache.commons.daemon.*;
 
 public class Program implements Daemon
 {
-  static final String _msg = "The quick brown fox jumps over the lazy dog.";
+  private static final String _msg = "The quick brown fox jumps over the lazy dog.";
 
   public static void main(String[] args) {}
 
@@ -35,14 +35,22 @@ public class Program implements Daemon
   @Override
   public void start() throws Exception
   {
-    System.out.println("[STARTED] Apache Commons Daemon.");
-    System.out.println("[MESSAGE] " + _msg);    
+    try {
+      System.out.println("[STARTED] Apache Commons Daemon.");
+      System.out.println("[MESSAGE] " + _msg);
+    } catch (Exception err) {
+      System.out.println(err.getMessage());
+    }
   }
 
   @Override
   public void stop() throws Exception
   {
-    System.out.println("[STOPPED] Apache Commons Daemon.");
+    try {
+      System.out.println("[STOPPED] Apache Commons Daemon.");
+    } catch (Exception err) {
+      System.out.println(err.getMessage());
+    }    
   }
   
   @Override
