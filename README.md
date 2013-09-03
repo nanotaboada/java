@@ -6,7 +6,7 @@ Manifesto
 
 About
 -----
-Oracle&reg; Java&trade; sample projects showcasing a variety of technologies, frameworks and libraries. Created by [Nano Taboada](https://nanotaboada.myopenid.com/) under a [MIT License](http://opensource.org/licenses/mit-license.php).
+Oracle&reg; Java&trade; sample projects showcasing a variety of technologies, frameworks and libraries.
 
 Credits
 -------
@@ -14,5 +14,6 @@ All samples have been coded in [Java](http://en.wikipedia.org/wiki/Java_%28progr
 
 Terms
 -----
+Created by [Nano Taboada](https://nanotaboada.myopenid.com/) under a [MIT License](http://opensource.org/licenses/mit-license.php).
 All trademarks, registered trademarks, service marks, product names, company names or logos are property of their respective owners and are used for reference purposes only.
 
